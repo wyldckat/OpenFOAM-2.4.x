@@ -330,6 +330,11 @@ Foam::labelListList Foam::combineFaces::getMergeSets
         {
             // Create region-to-faces addressing
             Map<labelList> regionToFaces(faceRegion.size());
+            
+            Info
+                << "cellI: " << cellI
+                << "\tcEdges: " << cEdges << nl
+                << "\tfaceRegion: " << faceRegion << endl;
 
             forAllConstIter(Map<label>, faceRegion, iter)
             {
@@ -365,6 +370,13 @@ Foam::labelListList Foam::combineFaces::getMergeSets
                     ),
                     mesh_.points()
                 );
+                
+                Info
+                    << "bigFace: " << bigFace << nl
+                    << "\tbigFace.edgeLoops(): "
+                    << bigFace.edgeLoops() << nl
+                    << "\tregionToFaces: " << regionToFaces << nl
+                    << endl;
 
                 // Only store if -only one outside loop -which forms convex face
                 if (validFace(minConcaveCos, bigFace))
