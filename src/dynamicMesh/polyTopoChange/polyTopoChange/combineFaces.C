@@ -331,7 +331,7 @@ Foam::labelListList Foam::combineFaces::getMergeSets
             // Create region-to-faces addressing
             Map<labelList> regionToFaces(faceRegion.size());
             
-            Info
+            Pout
                 << "cellI: " << cellI
                 << "\tcEdges: " << cEdges << nl
                 << "\tfaceRegion: " << faceRegion << endl;
@@ -371,7 +371,7 @@ Foam::labelListList Foam::combineFaces::getMergeSets
                     mesh_.points()
                 );
                 
-                Info
+                Pout
                     << "bigFace: " << bigFace << nl
                     << "\tbigFace.edgeLoops(): "
                     << bigFace.edgeLoops() << nl
